@@ -1,8 +1,8 @@
 import React from 'react';
 import dummyData from "./dummy-data";
 import './App.css';
-import SearchBar from "./src/SearchBar";
-// import CommentSection from "./src/CommentSection";
+import PostContainer from './components/PostContainer/PostContainer';
+// import CommentSection from "./src/CommentSection
 
 
 class App extends React.Component {
@@ -17,17 +17,13 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header>
-          <SearchBar />
-        </header>
-        <div className="post-container">
-          <dummyData PostContainer={this.state.data} />
-          {/* <CommentSection /> */}
-        </div>
-      </div>
+        <h1>This is App.js</h1>
+    {this.state.data.map(post => (
+    <PostContainer post={post} key={post.id}/>
+    ))}
+      </div> 
     );
   }
 }
-
 
 export default App;
