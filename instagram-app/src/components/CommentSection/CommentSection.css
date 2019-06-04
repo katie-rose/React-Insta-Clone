@@ -3,16 +3,14 @@
 }
 
 .comment-section {
-    padding-left: 30px;
+    padding: 10px 0 0 10px;
 } 
 
-.comment-user{
+.comment-user {
     font-weight:bolder;
-    margin:.5em;
+    margin-top:.5em;
+    margin-bottom:.5em;
 }
 .comment-text {
     margin:.5em;
 }
-.likes{
-    margin:.5em;
-} 

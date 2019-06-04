@@ -1,7 +1,6 @@
 .Search-Header {
   background-color: white;
   border-bottom: 1px solid #edf2f9;
-  position: fixed;
   width: 100%;
   top: 0;
 }
@@ -21,8 +20,9 @@
   height: 30px;
   font-size: 15px;
   text-align: center;
-  &:focus{
-    outline: none;
-    border-color: #2C7BE5;
-  }
+}
+
+.icon {
+  margin-right: 10px;
+  font-weight: lighter;
 }

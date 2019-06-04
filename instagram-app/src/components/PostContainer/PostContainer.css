@@ -1,3 +1,32 @@
+.post-container {
+  margin: 10px auto;
+}
+
+ .post-border {
+  border: 1px solid gray;
+  margin: 20px 0;
+}
+
+.post-icons {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  margin-left: 10px;
+  padding:.5em 0 .5em 0;
+}
+
+.fa-comment {
+    padding-left: 15px;
+}
+
+.post-likes {
+    display: flex;
+  flex-direction: row;
+  font-weight: 700;
+  text-align: left;
+  margin-left: 10px;
+}
+
 .user-info{
     display:flex;
     align-items:center;
@@ -15,6 +44,5 @@
     font-size:1.5em;
 }
 .far{
-    font-size:2em;
-    padding:.5em;
+    font-size: 1.5em;
 } 
