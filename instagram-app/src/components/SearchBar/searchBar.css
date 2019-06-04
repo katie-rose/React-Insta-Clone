@@ -1,0 +1,28 @@
+.Search-Header {
+  background-color: white;
+  border-bottom: 1px solid #edf2f9;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
+.Search-Bar {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  width: 80%;
+  margin: auto;
+  justify-content: space-between;
+}
+
+.Search-Input {
+      border-radius: 5px;
+  border: 1px solid #EDF2F9;
+  height: 30px;
+  font-size: 15px;
+  text-align: center;
+  &:focus{
+    outline: none;
+    border-color: #2C7BE5;
+  }
+}
