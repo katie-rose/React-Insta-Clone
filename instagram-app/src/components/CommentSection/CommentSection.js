@@ -16,8 +16,7 @@ class CommentSection extends React.Component {
         <div className ='comment-section'>
         {this.props.commentArray.map(comment=>(
         <div className='comment'>	  
-        <p>{comment.username}</p> <p className='comment-user'>{comment.username}</p>
-        <p>{comment.text}</p>	            
+        <p className='comment-user'>{comment.username}</p>           
         <p className='comment-text'>{comment.text}</p>
         </div>
             ))}

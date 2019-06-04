@@ -5,10 +5,8 @@
  .comment-user{
     font-weight:bolder;
     margin:.5em;
-    border: 1px solid green;
 }
-.comment-text{
-    border: 1px solid orange;
+.comment-text {
     margin:.5em;
 }
 .likes{
