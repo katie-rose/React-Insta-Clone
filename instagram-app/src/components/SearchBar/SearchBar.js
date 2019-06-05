@@ -4,9 +4,9 @@ import "./SearchBar.css";
 
 const SearchBar = () => {
 return (
-    <header className="Search-Header">
-      <img src={`${LogoText}`} alt="Instagram" className="logoText" />
-      <input type="text" placeholder="Search" className="search" />
+    <header className="search-header">
+      <img src={`${LogoText}`} alt="Instagram" className="logo-text" />
+      <input type="text" placeholder="Search" className="search-bar" />
     </header>
   );
 };
