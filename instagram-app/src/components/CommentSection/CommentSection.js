@@ -1,36 +1,56 @@
-import React from "react";
-import "./CommentSection.css";
+import React, { Component } from "react";
+import CommentForm from "./CommentForm";
+import PropTypes from "prop-types";
+import Comment from "./Comment";
 
-class CommentSection extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {input: ''};
-    }
-    handleChanges = e => {
-        this.setState({[e.target.name]:e.target.value})
-    }
+class CommentSection extends Component {
+  constructor() {
+    super();
+    this.state = {
+      comments: []
+    };
+  }
 
+  componentDidMount() {
+    this.setState({
+      comments: this.props.comments
+    });
+  }
 
-  render () {
-      return(
-        <div className ='comment-section'>
-        {this.props.commentArray.map(comment=>(
-        <div className='comment'>	  
-        <p className='comment-user'>{comment.username}</p>           
-        <p className='comment-text'>{comment.text}</p>
+  addNewComment = text => {
+    const newComment = {
+      id: Date.now(),
+      username: "doggosrule",
+      text: text
+    };
+
+    this.setState(prevState => {
+      return {
+        comments: [...prevState.comments, newComment]
+      };
+    });
+  };
+
+  render() {
+    return (
+      <div className="commentSection">
+        <div>
+          {this.state.comments.map(comment => {
+            return (
+              <div className="commentSection">
+                <Comment key={comment.id} comment={comment} />
+              </div>
+            );
+          })}
         </div>
-            ))}
-            <input
-                type='text'
-                name='input'
-                placeholder='Add a comment...'
-                // onChange={this.handleChanges}
-                // value={this.state.input}
-                />
+        <CommentForm addNewComment={this.addNewComment} />
       </div>
-)}
+    );
+  }
 }
 
-
+CommentSection.propTypes = {
+  comments: PropTypes.arrayOf(PropTypes.object)
+};
 
 export default CommentSection;

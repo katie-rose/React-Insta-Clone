@@ -1,30 +1,45 @@
 import React from "react";
+import { Card } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart, faComment } from "@fortawesome/free-regular-svg-icons";
 import CommentSection from "../CommentSection/CommentSection";
 import "./PostContainer.css";
+import PropTypes from "prop-types";
 
-const PostContainer = props => {
-    return (
-      <div className="post-container">
-        <div className="user-info">
-          <img
-            src={props.post.thumbnailUrl}
-            alt="user thumbnail"
-            className="user-thumbnail"
-          />
-          <p className="user-name">{props.post.username}</p>
-        </div>
-        <img
-          src={props.post.imageUrl}
-          alt={props.post.username}
-          className="post-image"
-        />
-        <div className="post-icons">
-          <i className="far fa-heart" />
-          <i className="far fa-comment" />
-        </div>
-        <b className="post-likes">{props.post.likes} likes</b>
-        <CommentSection commentArray={props.post.comments} />
+const PostContainer = ({
+  post: { username, thumbnailUrl, imageUrl, likes, liked, timestamp, comments, id },
+  toggleLike: toggleLike
+}) => (
+  <Card className="postContainer">
+    <div className="post">
+      <div className="postHeading">
+        <img className="thumbnail" src={`${thumbnailUrl}`} alt="thumbnail" />
+        <h2 className="userName">{username}</h2>
       </div>
-    );
+      <img src={`${imageUrl}`} alt="" />
+
+      <FontAwesomeIcon
+        icon={faHeart}
+        onClick={() => toggleLike(id)}
+        className={`like${liked === true ? ' liked' : ""}`}
+      />
+      <FontAwesomeIcon icon={faComment} className="comments" />
+      <div className="likes">{`${likes} likes`}</div>
+    </div>
+    <div className="timestamp">{timestamp}</div>
+    <CommentSection comments={comments} />
+  </Card>
+);
+
+PostContainer.propTypes = {
+  post: PropTypes.shape({
+    thumbnailUrl: PropTypes.string,
+    username: PropTypes.string,
+    imageURL: PropTypes.string,
+    likes: PropTypes.number,
+    comments: PropTypes.arrayOf(PropTypes.object),
+    timestamp: PropTypes.string
+  })
 };
+
 export default PostContainer;

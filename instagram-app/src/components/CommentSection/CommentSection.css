@@ -1,16 +1,22 @@
 .comment{
     display:flex;
+    align-items: baseline;
 }
 
-.comment-section {
+.commentSection {
     padding: 10px 0 0 10px;
 } 
 
-.comment-user {
+.comment .commentUser {
     font-weight:bolder;
     margin-top:.5em;
     margin-bottom:.5em;
 }
-.comment-text {
+.comment .commentText {
     margin:.5em;
+}
+
+input {
+ margin: 20px 5px;
+  width: 50%;
 }
