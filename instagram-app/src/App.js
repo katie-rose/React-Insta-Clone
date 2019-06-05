@@ -1,7 +1,7 @@
 import React from "react";
 import dummyData from "./dummy-data";
-import PostContainer from "./components/PostContainer/PostContainer";
 import SearchBar from "./components/SearchBar/SearchBar";
+import PostContainer from "./components/PostContainer/PostContainer"
 import PropTypes from "prop-types";
 
 import "./App.css";
@@ -20,28 +20,20 @@ class App extends React.Component {
     });
   }
 
-  toggleLike = id => {
-    const updateData = this.state.data.map(post => {
-      if (post.id === id) {
-        if (post.liked === true) {
-          post.likes -= 1;
-          post.liked = false;
-          return post;
-        } else {
-          post.likes += 1;
-          post.liked = true;
-          return post;
-        }
-      } else {
-        return post;
-      }
-    });
-
-    this.setState({
-      data: updateData
-    });
-
-    console.log(this.state.data);
+  filterResults = e => {
+    let currentPosts = [];
+    let filteredPosts = [];
+    if (e.target.value !== "") {
+      currentPosts = this.state.data;
+      filteredPosts = currentPosts.filter(item => {
+        const lcUsername = item.username.toLowerCase();
+        const filter = e.target.value.toLowerCase();
+        return lcUsername.includes(filter);
+      });
+    } else {
+      filteredPosts = this.state.data;
+    }
+    this.setState({ filtered: filteredPosts });
   };
 
   render() {
@@ -63,6 +55,7 @@ class App extends React.Component {
     );
   }
 }
+
 
 App.propTypes = {
   data: PropTypes.shape({

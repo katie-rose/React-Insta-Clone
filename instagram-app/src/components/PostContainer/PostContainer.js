@@ -7,27 +7,25 @@ import "./PostContainer.css";
 import PropTypes from "prop-types";
 
 const PostContainer = ({
-  post: { username, thumbnailUrl, imageUrl, likes, liked, timestamp, comments, id },
-  toggleLike: toggleLike
+  post: { username, thumbnailUrl, imageUrl, likes, liked, timestamp, comments }
 }) => (
-  <Card className="postContainer">
+  <Card className="post-container">
     <div className="post">
-      <div className="postHeading">
+      <div className="post-heading">
         <img className="thumbnail" src={`${thumbnailUrl}`} alt="thumbnail" />
-        <h2 className="userName">{username}</h2>
+        <h2 className="user-name">{username}</h2>
       </div>
       <img src={`${imageUrl}`} alt="" />
 
       <FontAwesomeIcon
         icon={faHeart}
-        onClick={() => toggleLike(id)}
-        className={`like${liked === true ? ' liked' : ""}`}
+        className={`like${liked === true ? " liked" : ""}`}
       />
       <FontAwesomeIcon icon={faComment} className="comments" />
       <div className="likes">{`${likes} likes`}</div>
     </div>
-    <div className="timestamp">{timestamp}</div>
     <CommentSection comments={comments} />
+    <div className="timestamp">{timestamp}</div>
   </Card>
 );
 
@@ -43,3 +41,5 @@ PostContainer.propTypes = {
 };
 
 export default PostContainer;
+
+
