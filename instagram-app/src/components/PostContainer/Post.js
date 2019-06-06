@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import CommentSection from "../CommentSection/CommentSection";
-import Likes from "./Likes";
 import PostHeader from "./PostHeader";
-import "./PostContainer.css"
+import Likes from "./Likes";
+import "./PostContainer.css";
 
 class Post extends React.Component {
   constructor(props) {
@@ -12,10 +12,12 @@ class Post extends React.Component {
       likes: props.post.likes
     };
   }
+
   incrementLike = () => {
     let likes = this.state.likes + 1;
     this.setState({ likes });
   };
+
   render() {
     return (
       <div className="post-border">
@@ -29,11 +31,8 @@ class Post extends React.Component {
             className="post-image"
             src={this.props.post.imageUrl}
           />
+          <Likes incrementLike={this.incrementLike} likes={this.state.likes} />
         </div>
-        <Likes
-          incrementLike={this.incrementLike}
-          likes={this.state.likes}
-        />
         <CommentSection
           postId={this.props.post.imageUrl}
           comments={this.props.post.comments}

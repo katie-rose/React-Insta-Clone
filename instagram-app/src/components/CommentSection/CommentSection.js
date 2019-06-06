@@ -1,15 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 import CommentForm from "./CommentForm";
 import PropTypes from "prop-types";
 import Comment from "./Comment";
+import './CommentSection.css'
 
-class CommentSection extends Component {
-  constructor() {
-    super();
-    this.state = {
-      comments: []
-    };
-  }
+  class CommentSection extends React.Component {
+    constructor() {
+      super();
+      this.state = {
+        comments: []
+      };
+    }
 
   componentDidMount() {
     this.setState({
