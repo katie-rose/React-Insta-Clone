@@ -1,54 +1,35 @@
-import React, { Component } from "react";
-import { Button, Form, FormGroup, InputGroup } from 'react-bootstrap';
-import "./Login.css";
+import React from "react";
+import styled from "styled-components";
+import LogoText from "../../img/logo.png";
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: "",
-      password: ""
-    };
-  }
+const LoginContainer = styled.div`
+  width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
-  handleInputChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
-  handleLoginSubmit = e => {
-    const user = this.state.username;
-    localStorage.setItem("user", user);
-    window.location.reload();
+class Login extends React.Component {
+  login = event => {
+    localStorage.setItem("Username", event.target.username.value);
+    localStorage.setItem("Password", event.target.password.value);
   };
 
   render() {
     return (
-      <Form className="login-form">
-        <h3>Welcome to React Insta Clone</h3>
-        <div>Please Login</div>
-        <FormGroup>
-          <InputGroup
-            type="text"
-            placeholder="User Name"
-            name="username"
-            value={this.state.username}
-            onChange={this.handleInputChange}
-          />
-        </FormGroup>
-        <FormGroup>
-          <InputGroup
-            type="password"
-            placeholder="Password"
-            name="password"
-            value={this.state.password}
-            onChange={this.handleInputChange}
-          />
-          <br />
-          <Button color="success" size="large" onClick={this.handleLoginSubmit}>
-            Log In
-          </Button>
-        </FormGroup>
-      </Form>
+      <LoginContainer>
+        <img
+          src={`${LogoText}`}
+          alt="instagram logo"
+          style={{ width: "300px", textAlign: "center" }}
+        />
+        <form onSubmit={this.login}>
+          <input name="username" type="text" />
+          <input name="password" type="password" />
+          <button>Login</button>
+        </form>
+      </LoginContainer>
     );
   }
 }

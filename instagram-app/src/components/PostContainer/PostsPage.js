@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import dummyData from "../../dummy-data";
-import PostsContainer from "./PostContainer";
+import "./PostContainer.css";
+import PostsContainer from "./PostsContainer";
 import SearchBar from "../SearchBar/SearchBar";
+import dummyData from "../../dummy-data.js";
+import styled from "styled-components";
 
 class PostsPage extends Component {
   constructor() {
@@ -11,27 +13,36 @@ class PostsPage extends Component {
       filteredPosts: []
     };
   }
+
   componentDidMount() {
     this.setState({ posts: dummyData });
   }
 
+  logout = () => {
+    localStorage.removeItem("Password");
+    localStorage.removeItem("Username");
+    window.location.reload();
+  };
+
   searchPostsHandler = e => {
-    // eslint-disable-next-line
     const posts = this.state.posts.filter(p => {
       if (p.username.includes(e.target.value)) {
         return p;
       }
+      return null;
     });
     this.setState({ filteredPosts: posts });
   };
+
   render() {
     return (
-      <div className="App">
+      <div>
         <SearchBar
           searchTerm={this.state.searchTerm}
           searchPosts={this.searchPostsHandler}
+          logout={this.logout}
         />
-        <PostContainer
+        <PostsContainer
           posts={
             this.state.filteredPosts.length > 0
               ? this.state.filteredPosts
@@ -42,5 +53,4 @@ class PostsPage extends Component {
     );
   }
 }
-
 export default PostsPage;

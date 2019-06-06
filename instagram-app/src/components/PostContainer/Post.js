@@ -1,9 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
 import CommentSection from "../CommentSection/CommentSection";
 import PostHeader from "./PostHeader";
-import Likes from "./Likes";
+import Like from "../../img/like.svg";
 import "./PostContainer.css";
+import styled from "styled-components";
 
 class Post extends React.Component {
   constructor(props) {
@@ -15,39 +15,53 @@ class Post extends React.Component {
 
   incrementLike = () => {
     let likes = this.state.likes + 1;
-    this.setState({ likes });
+    this.setState({ likes: likes });
   };
 
   render() {
     return (
-      <div className="post-border">
+      <Wrapper>
         <PostHeader
           username={this.props.post.username}
           thumbnailUrl={this.props.post.thumbnailUrl}
         />
-        <div className="post-image-wrapper">
-          <img
-            alt="post thumbnail"
-            className="post-image"
-            src={this.props.post.imageUrl}
-          />
-          <Likes incrementLike={this.incrementLike} likes={this.state.likes} />
-        </div>
-        <CommentSection
-          postId={this.props.post.imageUrl}
-          comments={this.props.post.comments}
-        />
-      </div>
+        <SubWrapper>
+          <Image src={this.props.post.imageUrl} alt="post thumbnail" />
+        </SubWrapper>
+        <LeftWrapper onClick={this.incrementLike}>
+          <Icon src={Like} alt="heart" />
+          <H5>likes: {this.state.likes}</H5>
+        </LeftWrapper>
+        <CommentSection comments={this.props.post.comments} />
+      </Wrapper>
     );
   }
 }
 
-Post.propTypes = {
-  post: PropTypes.shape({
-    username: PropTypes.string,
-    thumbnailUrl: PropTypes.string,
-    imageUrl: PropTypes.string
-  })
-};
+const Wrapper = styled.div`
+  border: 1px solid #d3d3d3;
+  margin: 5px 0;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+`;
+
+const SubWrapper = styled.div``;
+
+const LeftWrapper = styled.div`
+  text-align: left;
+  margin: 5px;
+`;
+
+const Image = styled.img`
+  width: 100%;
+`;
+
+const Icon = styled.img`
+  width: 30px;
+  height: 30px;
+`;
+
+const H5 = styled.h5`
+  font-size: 15px;
+`;
 
 export default Post;
