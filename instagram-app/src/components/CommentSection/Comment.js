@@ -7,16 +7,19 @@ const Text = styled.div`
   text-align: left;
   padding: 2px;
   margin-left: 4px;
+  font-size: 1rem;
 `;
 
 const Comments = styled.span`
-  font-weight: 300;
-  font-size: 14px;
+  font-weight: normal;
+  font-size: 1rem;
 `;
 
 const User = styled.span`
-  font-weight: 500;
-  font-size: 12px;
+  text-align: left;
+  font-size: 1rem;
+  padding: 1rem 0;
+  font-weight: bold;
 `;
 
 const Comment = props => {

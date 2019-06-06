@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   height: 500px;
-  width: 50%;
+  width: 60%;
   margin: 10px auto;
 `;
 

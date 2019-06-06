@@ -4,6 +4,8 @@ import Comment from "./Comment";
 import CommentInput from "./CommentInput";
 import styled from "styled-components";
 
+const Wrapper = styled.div``;
+
 class CommentSection extends React.Component {
   constructor(props) {
     super(props);
@@ -56,7 +58,5 @@ CommentSection.propTypes = {
     PropTypes.shape({ text: PropTypes.string, username: PropTypes.string })
   )
 };
-
-const Wrapper = styled.div``;
 
 export default CommentSection;

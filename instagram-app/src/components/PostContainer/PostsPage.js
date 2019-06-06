@@ -3,7 +3,6 @@ import "./PostContainer.css";
 import PostsContainer from "./PostsContainer";
 import SearchBar from "../SearchBar/SearchBar";
 import dummyData from "../../dummy-data.js";
-import styled from "styled-components";
 
 class PostsPage extends Component {
   constructor() {

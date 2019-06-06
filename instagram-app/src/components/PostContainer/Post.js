@@ -27,8 +27,11 @@ const Icon = styled.img`
   height: 30px;
 `;
 
-const H5 = styled.h5`
-  font-size: 15px;
+const Likes = styled.div`
+  text-align: left;
+  font-size: 1rem;
+  padding: 1rem 0;
+  font-weight: bold;
 `;
 
 class Post extends React.Component {
@@ -56,7 +59,7 @@ class Post extends React.Component {
         </SubWrapper>
         <LeftWrapper onClick={this.incrementLike}>
           <Icon src={Like} alt="heart" />
-          <H5>{this.state.likes} likes</H5>
+          <Likes>{this.state.likes} likes</Likes>
         </LeftWrapper>
         <CommentSection comments={this.props.post.comments} />
       </Wrapper>
