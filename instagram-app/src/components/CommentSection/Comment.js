@@ -22,8 +22,8 @@ const User = styled.span`
 const Comment = props => {
   return (
     <Text>
+      <User>{props.comment.username} </User>
       <Comments>{props.comment.text}</Comments>{" "}
-      <User>-{props.comment.username}</User>
     </Text>
   );
 };

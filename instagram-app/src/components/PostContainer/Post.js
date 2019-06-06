@@ -5,39 +5,6 @@ import Like from "../../img/like.svg";
 import "./PostContainer.css";
 import styled from "styled-components";
 
-class Post extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      likes: props.post.likes
-    };
-  }
-
-  incrementLike = () => {
-    let likes = this.state.likes + 1;
-    this.setState({ likes: likes });
-  };
-
-  render() {
-    return (
-      <Wrapper>
-        <PostHeader
-          username={this.props.post.username}
-          thumbnailUrl={this.props.post.thumbnailUrl}
-        />
-        <SubWrapper>
-          <Image src={this.props.post.imageUrl} alt="post thumbnail" />
-        </SubWrapper>
-        <LeftWrapper onClick={this.incrementLike}>
-          <Icon src={Like} alt="heart" />
-          <H5>likes: {this.state.likes}</H5>
-        </LeftWrapper>
-        <CommentSection comments={this.props.post.comments} />
-      </Wrapper>
-    );
-  }
-}
-
 const Wrapper = styled.div`
   border: 1px solid #d3d3d3;
   margin: 5px 0;
@@ -63,5 +30,38 @@ const Icon = styled.img`
 const H5 = styled.h5`
   font-size: 15px;
 `;
+
+class Post extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      likes: props.post.likes
+    };
+  }
+
+  incrementLike = () => {
+    let likes = this.state.likes + 1;
+    this.setState({ likes: likes });
+  };
+
+  render() {
+    return (
+      <Wrapper>
+        <PostHeader
+          username={this.props.post.username}
+          thumbnailUrl={this.props.post.thumbnailUrl}
+        />
+        <SubWrapper>
+          <Image src={this.props.post.imageUrl} alt="post thumbnail" />
+        </SubWrapper>
+        <LeftWrapper onClick={this.incrementLike}>
+          <Icon src={Like} alt="heart" />
+          <H5>{this.state.likes} likes</H5>
+        </LeftWrapper>
+        <CommentSection comments={this.props.post.comments} />
+      </Wrapper>
+    );
+  }
+}
 
 export default Post;
