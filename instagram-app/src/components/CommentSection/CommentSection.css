@@ -3,13 +3,9 @@
     align-items: baseline;
 }
 
-.commentSection {
-    padding: 10px 0 0 10px;
-} 
-
 .comment .commentUser {
     font-weight:bolder;
-    margin-top:.5em;
+    margin-top:.2em;
     margin-bottom:.5em;
 }
 .comment .commentText {

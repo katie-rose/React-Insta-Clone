@@ -1,4 +1,4 @@
-.postContainer {
+.post-container {
   margin: 10px auto;
   border: 1px solid lightgray;
   padding: 2rem !important;
@@ -8,18 +8,18 @@
   margin: 1rem 0;
 }
 
-.postHeading {
+.post-heading {
   display: flex;
   padding: 1rem 0;
 }
 
-.postHeading .thumbnail {
+.post-heading .thumbnail {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
 }
 
-.postHeading .userName {
+.post-heading .user-name {
   font-size: 1.2rem;
   font-weight: bold;
   padding: 0 1rem;
@@ -28,19 +28,32 @@
 .likes {
   text-align: left;
   font-size: 1.2rem;
-  padding: 1rem 0;
+  font-weight: bold;
 }
 
-.addComment {
+.add-comment {
   margin-top: 2rem;
 }
 
-.postContainer .post .like,
-.postContainer .post .comments {
+.post-container .post .like,
+.post-container .post .comments {
   font-size: 1.5rem;
   margin: 1rem 1rem 1rem 0;
 }
 
-.liked {
-  background-color: crimson;
+
+.timestamp {
+  padding-top: 20px;
+  font-weight: lighter;
+  color: grey;
+}
+
+.like-section {
+  display: flex;
+}
+
+.like-section-wrapper {
+  height: 10px;
+  width: 10px;
+  margin: 10px;
 }

@@ -1,56 +1,62 @@
-import React, { Component } from "react";
-import CommentForm from "./CommentForm";
+import React from "react";
 import PropTypes from "prop-types";
 import Comment from "./Comment";
+import CommentInput from "./CommentInput";
+import styled from "styled-components";
 
-class CommentSection extends Component {
-  constructor() {
-    super();
+const Wrapper = styled.div``;
+
+class CommentSection extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
-      comments: []
+      comments: props.comments,
+      inputText: ""
     };
   }
 
-  componentDidMount() {
+  addNewComment = event => {
+    event.preventDefault();
+    if (this.state.inputText) {
+      this.setState({
+        comments: [
+          ...this.state.comments,
+          {
+            text: this.state.inputText,
+            username: localStorage.getItem("Username")
+          }
+        ],
+        inputText: ""
+      });
+    }
+  };
+
+  handleChange = event => {
     this.setState({
-      comments: this.props.comments
-    });
-  }
-
-  addNewComment = text => {
-    const newComment = {
-      id: Date.now(),
-      username: "doggosrule",
-      text: text
-    };
-
-    this.setState(prevState => {
-      return {
-        comments: [...prevState.comments, newComment]
-      };
+      [event.target.name]: event.target.value
     });
   };
 
   render() {
     return (
-      <div className="commentSection">
-        <div>
-          {this.state.comments.map(comment => {
-            return (
-              <div className="commentSection">
-                <Comment key={comment.id} comment={comment} />
-              </div>
-            );
-          })}
-        </div>
-        <CommentForm addNewComment={this.addNewComment} />
-      </div>
+      <Wrapper>
+        {this.state.comments.map((c, i) => (
+          <Comment key={i} comment={c} />
+        ))}
+        <CommentInput
+          addNewComment={this.addNewComment}
+          handleChange={this.handleChange}
+          inputText={this.state.inputText}
+        />
+      </Wrapper>
     );
   }
 }
 
 CommentSection.propTypes = {
-  comments: PropTypes.arrayOf(PropTypes.object)
+  comments: PropTypes.arrayOf(
+    PropTypes.shape({ text: PropTypes.string, username: PropTypes.string })
+  )
 };
 
 export default CommentSection;
